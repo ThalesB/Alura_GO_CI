@@ -34,8 +34,12 @@ jobs:
       
   
   build:
+    name: Test on fo ${{ matrix.go_version }} and ${{ matrix.os }}
     needs: test
     runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-11]
     steps:
     - uses: actions/checkout@v3
     - name: Build
